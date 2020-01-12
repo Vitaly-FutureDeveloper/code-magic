@@ -24,8 +24,15 @@ window.addEventListener('DOMContentLoaded', function(){
 		var playerIndex = 0;
 		var playerName = 'Вы';
 
+		ctx.fillStyle = '#000';
+
 		var players = ['Вы', 'Иван', 'Юля'];
 
+		for (var i = 0; i < players.length; i++ ){
+			ctx.fillText(players[i], CLOUD_X + GAP, CLOUD_Y + GAP + FONT_GAP + (GAP + BAR_HEIGHT) * i );
+			ctx.fillRect(CLOUD_X + GAP + TEXT_WIDTH, CLOUD_Y + GAP + (GAP + BAR_HEIGHT) * i, barWidth, BAR_HEIGHT);
+		}
+/*
 		ctx.fillStyle = '#000';
 		ctx.fillText('Вы', CLOUD_X + GAP, CLOUD_Y + GAP + FONT_GAP + (GAP + BAR_HEIGHT)*0 );
 		ctx.fillRect(CLOUD_X + GAP + TEXT_WIDTH, CLOUD_Y + GAP + (GAP + BAR_HEIGHT)*0, barWidth, BAR_HEIGHT);
@@ -41,6 +48,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
 		ctx.fillText('Юля', CLOUD_X + GAP, CLOUD_Y + GAP + FONT_GAP + (GAP + BAR_HEIGHT)*2 );
 		ctx.fillRect(CLOUD_X + GAP + TEXT_WIDTH, CLOUD_Y + GAP + (GAP + BAR_HEIGHT)*2, barWidth, BAR_HEIGHT);
+	*/
 	};
 
 
