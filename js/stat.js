@@ -29,6 +29,10 @@ window.addEventListener('DOMContentLoaded', function(){
 		return maxElement;
 	};
 
+	var rand = function(max){
+		return Math.floor(Math.random() * Math.floor(max));
+	};
+
 	window.renderStatistics = function(ctx, players, times){
 		renderCloud( ctx, CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0, 0, 0, 0.3)' );
 		renderCloud( ctx, CLOUD_X, CLOUD_Y, '#fff' );
@@ -37,12 +41,21 @@ window.addEventListener('DOMContentLoaded', function(){
 
 		var maxTime = getMaxElement(times);
 
+
+
 		for (var i = 0; i < players.length; i++ ){
 			//	 MAX_BAR		BAR[I]
 			//------------- = ----------
 			//	BAR_WIDTH		  X
 
 			// X = ( BAR_WIDTH * BAR[I] ) / MAX_BAR
+
+			if ( players[i] == "Вы" ) {
+				ctx.fillStyle = "red"; //Игроку красная полоска
+			} else {
+				var color = "rgb(" + rand(255) + ", " + rand(255) + ", " + rand(255) + ")";
+				ctx.fillStyle = color; //Остальным рандомный цвет
+			}
 
 			ctx.fillText(players[i], CLOUD_X + GAP, CLOUD_Y + GAP + FONT_GAP + (GAP + BAR_HEIGHT) * i );
 			ctx.fillRect(CLOUD_X + GAP + TEXT_WIDTH, CLOUD_Y + GAP + (GAP + BAR_HEIGHT) * i, (barWidth * times[i]) / maxTime, BAR_HEIGHT);
