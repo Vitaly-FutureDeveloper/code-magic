@@ -4,6 +4,9 @@ window.addEventListener('DOMContentLoaded', function(){
 	var CLOUD_WIDTH = 500;
 	var CLOUD_HEIGHT = 200;
 
+	var TEXT_X = 140;
+	var TEXT_Y = 210;
+
 	var CLOUD_X = 100;
 	var CLOUD_Y = 50;
 	var GAP = 10;
@@ -41,8 +44,6 @@ window.addEventListener('DOMContentLoaded', function(){
 
 		var maxTime = getMaxElement(times);
 
-
-
 		for (var i = 0; i < players.length; i++ ){
 			//	 MAX_BAR		BAR[I]
 			//------------- = ----------
@@ -60,6 +61,12 @@ window.addEventListener('DOMContentLoaded', function(){
 			ctx.fillText(players[i], CLOUD_X + GAP, CLOUD_Y + GAP + FONT_GAP + (GAP + BAR_HEIGHT) * i );
 			ctx.fillRect(CLOUD_X + GAP + TEXT_WIDTH, CLOUD_Y + GAP + (GAP + BAR_HEIGHT) * i, (barWidth * times[i]) / maxTime, BAR_HEIGHT);
 		}
+
+		//Рисуем текст
+		ctx.fillStyle = '#000';
+		ctx.font = "16px PT Mono";
+		ctx.fillText("Ура! Вы победили", TEXT_X, TEXT_Y);
+		ctx.fillText("Список результатов на экране", TEXT_X, TEXT_Y + 30);
 	};
 
 
