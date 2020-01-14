@@ -32,20 +32,22 @@ window.addEventListener('DOMContentLoaded', function(){
 	var TABLE_WIDTH = 40;
 	var TABLE_HEIGHT = 150;
 
+	//СЛУЖЕБНЫЕ ФУНКЦИИ >
+	//вернёт максимальный элемент массива >
 	var getMaxElement = function(array){
 		var maxElement = array[0];
-
 		for (var i in array){
 			if (array[i] > maxElement){
 				maxElement = array[i];
 			}
 		}
-
 		return maxElement;
 	};
+	//вернёт случайное число от 0 до max >
 	var rand = function(max){
 		return Math.floor(Math.random() * Math.floor(max));
 	};
+	//СЛУЖЕБНЫЕ ФУНКЦИИ <
 
 	var renderCloud = function(ctx, x, y, tx, ty, colors){
 		ctx.beginPath();
@@ -90,8 +92,6 @@ window.addEventListener('DOMContentLoaded', function(){
 
 		var maxTime = getMaxElement(times);
 
-		//ctx.textAlign = "center";
-
 		for (var i in players){
 
 			if (players[i] == 'Вы')
@@ -103,13 +103,5 @@ window.addEventListener('DOMContentLoaded', function(){
 			ctx.fillStyle = "rgb(" + rand(205) + ", " + rand(255) + ", " + rand(255) + ")";
 		}
 	};
-
-
-
-
-
-
-
-
 
 });
