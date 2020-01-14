@@ -40,8 +40,6 @@ window.addEventListener('DOMContentLoaded', function(){
 		renderCloud( ctx, CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0, 0, 0, 0.3)' );
 		renderCloud( ctx, CLOUD_X, CLOUD_Y, '#fff' );
 
-		ctx.fillStyle = '#000';
-
 		var maxTime = getMaxElement(times);
 
 		for (var i = 0; i < players.length; i++ ){
@@ -68,10 +66,5 @@ window.addEventListener('DOMContentLoaded', function(){
 		ctx.fillText("Ура! Вы победили", TEXT_X, TEXT_Y);
 		ctx.fillText("Список результатов на экране", TEXT_X, TEXT_Y + 30);
 	};
-
-
-
-
-
 
 });
