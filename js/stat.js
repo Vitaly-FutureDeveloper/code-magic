@@ -15,21 +15,37 @@ window.addEventListener('DOMContentLoaded', function(){
 	var CLOUD_WIDTH = 420;
 	var CLOUD_HEIGHT = 270;
 	var BEZIRE_X = -50;
-	var GAB = 10;
+	var GAP = 10;
 
 	var TEXTS = {
 		T1: "Ура вы победили",
 		T2: "Список результатов",
 	};
 	var TEXT_HEIGHT = 20;
-	var TEXT_WIDTH = 30;
 	var TEXT_OPT = {
 		SIZE: "16px",
 		FONT: "PT Mono",
 		COLOR: "#000000"
-	}
+	};
 
+	var FONT_GAP = 50;
+	var TABLE_WIDTH = 40;
+	var TABLE_HEIGHT = 150;
 
+	var getMaxElement = function(array){
+		var maxElement = array[0];
+
+		for (var i in array){
+			if (array[i] > maxElement){
+				maxElement = array[i];
+			}
+		}
+
+		return maxElement;
+	};
+	var rand = function(max){
+		return Math.floor(Math.random() * Math.floor(max));
+	};
 
 	var renderCloud = function(ctx, x, y, tx, ty, colors){
 		ctx.beginPath();
@@ -58,19 +74,34 @@ window.addEventListener('DOMContentLoaded', function(){
 		if (typeof(texts) == "object"){
 			var i = 1;
 			for (var tx in texts){
-				ctx.fillText(texts[tx], CLOUD_X + GAB, CLOUD_Y + GAB + (TEXT_HEIGHT * i) );
+				ctx.fillText(texts[tx], CLOUD_X + GAP, CLOUD_Y + GAP + (TEXT_HEIGHT * i) );
 				i++;
 			}
 		} else {
-			ctx.fillText(texts, CLOUD_X + GAB, CLOUD_Y + GAB);
+			ctx.fillText(texts, CLOUD_X + GAP, CLOUD_Y + GAP);
 		}
 	};
 
 	window.renderStatistics = function(ctx, players, times){
-		renderCloud(ctx, CLOUD_X + GAB, CLOUD_Y + GAB, CLOUD_WIDTH + GAB, CLOUD_HEIGHT + GAB, colors2);
+		renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, CLOUD_WIDTH + GAP, CLOUD_HEIGHT + GAP, colors2);
 		renderCloud(ctx, CLOUD_X, CLOUD_Y, CLOUD_WIDTH, CLOUD_HEIGHT, colors1);
 
 		renderText(ctx, TEXTS, TEXT_OPT);
+
+		var maxTime = getMaxElement(times);
+
+		//ctx.textAlign = "center";
+
+		for (var i in players){
+
+			if (players[i] == 'Вы')
+				ctx.fillStyle = "red";
+
+			ctx.fillText(players[i], CLOUD_X + FONT_GAP + ((FONT_GAP + GAP) * i), CLOUD_HEIGHT - GAP);
+			ctx.fillRect(CLOUD_X + FONT_GAP + ((FONT_GAP +GAP) * i), CLOUD_HEIGHT - GAP*3, TABLE_WIDTH, (-(TABLE_HEIGHT * times[i]) / maxTime));
+			
+			ctx.fillStyle = "rgb(" + rand(205) + ", " + rand(255) + ", " + rand(255) + ")";
+		}
 	};
 
 
