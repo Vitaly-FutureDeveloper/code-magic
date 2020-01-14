@@ -96,11 +96,11 @@ window.addEventListener('DOMContentLoaded', function(){
 
 			if (players[i] == 'Вы')
 				ctx.fillStyle = "red";
+			else
+				ctx.fillStyle = "rgba(0, 0, 255, " + Math.random() + ")";
 
 			ctx.fillText(players[i], CLOUD_X + FONT_GAP + ((FONT_GAP + GAP) * i), CLOUD_HEIGHT - GAP);
 			ctx.fillRect(CLOUD_X + FONT_GAP + ((FONT_GAP +GAP) * i), CLOUD_HEIGHT - GAP*3, TABLE_WIDTH, (-(TABLE_HEIGHT * times[i]) / maxTime));
-			
-			ctx.fillStyle = "rgb(" + rand(205) + ", " + rand(255) + ", " + rand(255) + ")";
 		}
 	};
 
