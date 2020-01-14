@@ -23,6 +23,11 @@ window.addEventListener('DOMContentLoaded', function(){
 	};
 	var TEXT_HEIGHT = 20;
 	var TEXT_WIDTH = 30;
+	var TEXT_OPT = {
+		SIZE: "16px",
+		FONT: "PT Mono",
+		COLOR: "#000000"
+	}
 
 
 
@@ -47,10 +52,25 @@ window.addEventListener('DOMContentLoaded', function(){
 		
 	};
 
+	var renderText = function(ctx, texts, options){
+		ctx.fillStyle = options.COLOR;
+		ctx.font = `${TEXT_OPT.SIZE} ${TEXT_OPT.FONT}`;
+		if (typeof(texts) == "object"){
+			var i = 1;
+			for (var tx in texts){
+				ctx.fillText(texts[tx], CLOUD_X + GAB, CLOUD_Y + GAB + (TEXT_HEIGHT * i) );
+				i++;
+			}
+		} else {
+			ctx.fillText(texts, CLOUD_X + GAB, CLOUD_Y + GAB);
+		}
+	};
+
 	window.renderStatistics = function(ctx, players, times){
 		renderCloud(ctx, CLOUD_X + GAB, CLOUD_Y + GAB, CLOUD_WIDTH + GAB, CLOUD_HEIGHT + GAB, colors2);
 		renderCloud(ctx, CLOUD_X, CLOUD_Y, CLOUD_WIDTH, CLOUD_HEIGHT, colors1);
 
+		renderText(ctx, TEXTS, TEXT_OPT);
 	};
 
 
