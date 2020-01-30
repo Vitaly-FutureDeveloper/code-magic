@@ -4,28 +4,36 @@ var setupOpen = document.querySelector('.setup-open');
 var setup = document.querySelector('.setup');
 var setupClose = document.querySelector('.setup-close');
 
-setupOpen.addEventListener('click', function(){
+var openPopup = function(){
 	setup.classList.remove('hidden');
 
 	document.addEventListener('keydown', function(evt){
 		if(evt.keyCode === 27)
-			setup.classList.add('hidden');
+			closePopup();
 	});
+};
+var closePopup = function(){
+	setup.classList.add('hidden');
+};
+
+setupOpen.addEventListener('click', function(){
+	openPopup();
 });
 
 setupOpen.addEventListener('keydown', function(evt){
 	if(evt.keyCode === 13)
-		setup.classList.remove('hidden');
+		openPopup();
 });
 
 setupClose.addEventListener('click', function(){
-	setup.classList.add('hidden');
+	closePopup();
 });
 setupClose.addEventListener('keydown', function(evt){
 	if(evt.keyCode === 13)
-		setup.classList.add('hidden');
+		closePopup();
 });
 
+//Валидация формы отправки данных
 var userNameInput = setup.querySelector('.setup-user-name');
 
 userNameInput.addEventListener('invalid', function(evt){
