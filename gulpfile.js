@@ -6,10 +6,14 @@ gulp.task('hello', function(){
 	console.log('Hello world');
 });
 
-gulp.task('watch', function(){
+gulp.task('start', function(){
 	browserSync.init({
 		server: {
-			baseDir: '.'
+			baseDir: '.',
+			notify: false,
+			open: true,
+			cors: true,
+			ui: false
 		},
 	})
 	gulp.watch('./*.html').on('change', browserSync.reload)

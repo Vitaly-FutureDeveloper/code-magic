@@ -12,5 +12,4 @@ window.util = (function(){
 				action();
 			}
 		}	
-//	};
 })();

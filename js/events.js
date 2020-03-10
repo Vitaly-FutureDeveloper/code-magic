@@ -146,7 +146,7 @@ setupFireballColor.addEventListener('focus', allFocus);
 //CHOOSE COLORS coat, eyes, fireball <<
 
 //Валидация формы отправки данных
-var userNameInput = setup.querySelector('.setup-user-name');
+var userNameInput = document.querySelector('.setup-user-name');
 
 userNameInput.addEventListener('invalid', function(evt){
 	if(userNameInput.validity.tooShort){
